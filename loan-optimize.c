@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <assert.h>
+#include <time.h>
 #include "micro-ga.h"
 
 
@@ -188,7 +189,7 @@ float num_payments(loan_t* loan, double monthly_payment)
 {
 	float i = loan->interest_rate / 12.0 / 100.0;
 	float n  = -1 * log10(1 - i * loan->principal / monthly_payment );
-	      n /= log10(1 + i);
+	return n /= log10(1 + i);
 }
 
 /* Compute the total paid given the loan and a monthly payment */
